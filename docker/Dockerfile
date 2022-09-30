@@ -57,20 +57,20 @@ RUN mkdir -p /var/run/php-fpm/
 #拷貝php設定
 COPY ./configs/php.ini /etc/php.ini
 COPY ./configs/php.conf /etc/httpd/conf.d/php.conf
-#podman cp fedora-httpd-cnr:/etc/php.ini configs/
-#podman cp fedora-httpd-cnr:/etc/httpd/conf.d/php.conf configs/
+#podman cp qbpwcf-cnr:/etc/php.ini configs/
+#podman cp qbpwcf-cnr:/etc/httpd/conf.d/php.conf configs/
 
 #拷貝SSL憑證
 #需先安裝mkcert並進入certs目錄執行gencerts.sh
 COPY ./configs/ssl.conf /etc/httpd/conf.d/ssl.conf
 COPY ./certs/apache-ssl-key.pem /etc/pki/tls/private/localhost.key
 COPY ./certs/apache-ssl.crt /etc/pki/tls/certs/localhost.crt
-#podman cp fedora-httpd-cnr:/etc/httpd/conf.d/ssl.conf configs/
+#podman cp qbpwcf-cnr:/etc/httpd/conf.d/ssl.conf configs/
 #localhost.key和localhost.crt原本不存在
 
 #拷貝httpd設定
 COPY ./configs/httpd.conf /etc/httpd/conf/httpd.conf
-#podman cp fedora-httpd-cnr:/etc/httpd/conf/httpd.conf configs/
+#podman cp qbpwcf-cnr:/etc/httpd/conf/httpd.conf configs/
 
 EXPOSE 80
 EXPOSE 443

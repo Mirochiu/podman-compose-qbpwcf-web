@@ -1,0 +1,45 @@
+version: "3.8"
+
+# run with rebuild
+# podman-compose up -d --build
+
+# run
+# podman-compose up -d
+
+# $ curl http://localhost:8800/
+# $ curl https://localhost:44300/
+# ps> Invoke-WebRequest http://localhost:8800/
+# ps> Invoke-WebRequest https://localhost:44300/
+
+# stop
+# podman-compose down
+
+# stop and remove volumes
+# podman-compose down -v
+
+# podman exec -it qbpwcf-web /bin/bash
+
+# podman logs qbpwcf-web
+
+# podman network inspect my-bus
+
+# podman inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qbpwcf-web
+
+services:
+  php:
+    container_name: qbpwcf-web
+    hostname: localhost
+    build:
+      context: docker
+      dockerfile: Dockerfile
+    ports:
+      - 8800:80
+      - 44300:443
+    volumes:
+      - ./public:/var/www/html
+    networks:
+      - backbone
+
+networks:
+  backbone:
+    name: my-bus

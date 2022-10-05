@@ -1,5 +1,5 @@
 #建立新的image
-#podman build -t qbpwcf:20220926 -f docker/Dockerfile .
+#podman build -t qbpwcf:20221002 -f docker/Dockerfile .
 #建立containrer並跑在8800,44300起來
 #podman run -itd -v ./public:/var/www/html -p 8800:80 -p 44300:443 --name=qbpwcf-cnr qbpwcf
 #進入container
@@ -24,9 +24,9 @@ RUN yum clean all
 #QBPWCF的來源檔案名
 #須先download
 #https://sourceforge.net/projects/qbpwc/
-ENV QBPWCF_FILE=qbpwcf-alpha-20220926-2.tar.zst
+ENV QBPWCF_FILE=qbpwcf-alpha-20221002-2.tar.zst
 #QBPWCF解開壓縮後的資料夾名稱
-ENV QBPWCF_FOLDER_NAME=20220926
+ENV QBPWCF_FOLDER_NAME=20221002
 #安裝QBPWCF套件
 WORKDIR /usr/lib/
 COPY $QBPWCF_FILE ./

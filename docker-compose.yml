@@ -7,9 +7,9 @@ version: "3.8"
 # podman-compose up -d
 
 # $ curl http://localhost:8800/
-# $ curl https://localhost:44300/
+# $ curl https://localhost:4430/
 # ps> Invoke-WebRequest http://localhost:8800/
-# ps> Invoke-WebRequest https://localhost:44300/
+# ps> Invoke-WebRequest https://localhost:4430/
 
 # stop
 # podman-compose down
@@ -30,11 +30,11 @@ services:
     container_name: qbpwcf-web
     hostname: localhost
     build:
-      context: docker
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/Dockerfile
     ports:
       - 8800:80
-      - 44300:443
+      - 4430:443
     volumes:
       - ./public:/var/www/html
     networks:
